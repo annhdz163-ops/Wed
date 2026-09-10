@@ -1,0 +1,293 @@
+```html
+<!DOCTYPE html>
+<html lang="vi" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PACKPE & KISMOD - Shop Acc Game & Mod PE Uy Tín Tự Động</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar styling */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        .dark ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #16a34a; border-radius: 9999px; }
+        
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .active-tab {
+            background: linear-gradient(135deg, #16a34a, #15803d) !important;
+            color: #ffffff !important;
+            border-color: #22c55e !important;
+            box-shadow: 0 4px 14px rgba(22, 163, 74, 0.35);
+        }
+
+        .card-hover {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -6px rgba(22, 163, 74, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased min-h-screen flex flex-col transition-colors duration-300">
+
+    <!-- Header Navbar -->
+    <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="max-w-6xl mx-auto px-3 sm:px-4 py-3 flex items-center justify-between gap-2">
+            <!-- Logo & Web Name -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 bg-gradient-to-tr from-emerald-600 to-green-500 rounded-xl flex items-center justify-center text-white shadow-md shadow-emerald-600/30 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-cube text-xl"></i>
+                </div>
+                <div>
+                    <span class="text-base sm:text-xl font-black tracking-tight text-slate-900 dark:text-white uppercase block leading-tight">
+                        PACKPE<span class="text-emerald-600">.MOD</span>
+                    </span>
+                    <span class="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 font-bold tracking-widest block uppercase">KISMOD & Minecraft Hub</span>
+                </div>
+            </a>
+
+            <!-- Right Controls (Wallet, Theme, Admin Login) -->
+            <div class="flex items-center gap-2">
+                <!-- User Wallet Display -->
+                <div class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-emerald-50 dark:bg-slate-800 border border-emerald-200 dark:border-slate-700 text-xs font-black text-emerald-700 dark:text-emerald-400">
+                    <i class="fa-solid fa-wallet text-emerald-600"></i>
+                    <span class="hidden xs:inline">Ví:</span>
+                    <span id="userBalanceDisplay">0</span>đ
+                    <button onclick="addFundsModal()" class="ml-1 text-[10px] bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white px-2 py-0.5 rounded-md transition-all shadow-sm">+ Nạp</button>
+                </div>
+
+                <!-- Dark/Light Theme Toggle -->
+                <button onclick="toggleDarkMode()" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-amber-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                    <i class="fa-solid fa-moon dark:hidden"></i>
+                    <i class="fa-solid fa-sun hidden dark:block"></i>
+                </button>
+
+                <!-- Admin Auth Area -->
+                <div id="authArea">
+                    <button onclick="openLoginModal()" class="px-3 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-emerald-600 dark:hover:bg-emerald-700 active:scale-95 text-white font-bold text-xs shadow-md transition-all flex items-center gap-1.5">
+                        <i class="fa-solid fa-user-shield"></i>
+                        <span class="hidden sm:inline">Admin Đăng Nhập</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow max-w-6xl w-full mx-auto px-3 sm:px-4 py-4 md:py-6 space-y-6">
+
+        <!-- Banner Announcement & Contacts Box -->
+        <section class="bg-white dark:bg-slate-900 rounded-2xl p-4 md:p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3 relative overflow-hidden">
+            <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2.5">
+                <div class="flex items-center gap-2 text-emerald-600 font-extrabold text-xs sm:text-sm md:text-base">
+                    <i class="fa-solid fa-bullhorn animate-bounce"></i>
+                    <span>THÔNG BÁO HỆ THỐNG & HỖ TRỢ KHÁCH HÀNG</span>
+                </div>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300">Auto 24/7</span>
+            </div>
+
+            <div class="text-xs md:text-sm text-slate-600 dark:text-slate-300 space-y-2 leading-relaxed">
+                <p class="font-bold text-slate-800 dark:text-slate-100">
+                    👋 Chào Mừng Đến Với Cửa Hàng Acc Game & Mod PE Uy Tín Hàng Đầu!
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-medium">
+                    <div class="p-2.5 bg-slate-50 dark:bg-slate-800/80 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center gap-2">
+                        <i class="fa-solid fa-phone text-emerald-500 text-sm"></i>
+                        <span>Zalo Admin: <strong class="text-emerald-600 dark:text-emerald-400">0869.885.921</strong></span>
+                    </div>
+                    <div class="p-2.5 bg-slate-50 dark:bg-slate-800/80 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center gap-2">
+                        <i class="fa-brands fa-telegram text-sky-500 text-sm"></i>
+                        <span>Telegram: <a href="https://t.me/kismod_support" target="_blank" class="text-emerald-600 dark:text-emerald-400 underline font-bold">t.me/kismod_support</a></span>
+                    </div>
+                </div>
+                <div class="text-[11px] sm:text-xs text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/40 p-2.5 rounded-xl border border-amber-200 dark:border-amber-900 flex items-start gap-1.5">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-500 mt-0.5 shrink-0"></i>
+                    <span><b>Lưu ý:</b> Hệ thống xử lý tự động 100%. Vui lòng quay video từ lúc bấm mua đến khi nhập key/acc để được hỗ trợ tối đa nếu gặp sự cố.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category Selector Section -->
+        <section class="space-y-3">
+            <div class="flex items-center justify-between">
+                <h2 class="text-sm sm:text-base md:text-lg font-black text-slate-900 dark:text-white uppercase flex items-center gap-2">
+                    <i class="fa-solid fa-layer-group text-emerald-600"></i>
+                    <span>Tựa Game & Danh Mục</span>
+                </h2>
+
+                <!-- Admin Action Buttons -->
+                <div class="flex items-center gap-2">
+                    <button id="addCategoryAdminBtn" onclick="openAddCategoryModal()" class="hidden px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-all shadow-sm items-center gap-1">
+                        <i class="fa-solid fa-plus"></i> Thêm Danh Mục
+                    </button>
+                    <button id="addAdminBtn" onclick="openAddProductModal()" class="hidden px-3 py-1.5 bg-slate-900 hover:bg-slate-800 dark:bg-emerald-600 text-white rounded-xl text-xs font-bold transition-all shadow-sm items-center gap-1">
+                        <i class="fa-solid fa-plus-circle"></i> Đăng Bán
+                    </button>
+                </div>
+            </div>
+
+            <!-- Category Pills Bar -->
+            <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1" id="categoryBar">
+                <!-- Dynamically filled by JS -->
+            </div>
+        </section>
+
+        <!-- Products Display Grid Section -->
+        <section class="space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
+                <div class="flex items-center gap-2">
+                    <span id="currentCategoryTitle" class="font-bold text-slate-900 dark:text-white text-sm sm:text-base">Tất cả sản phẩm</span>
+                    <span id="productCountBadge" class="text-xs font-black bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300 px-2.5 py-0.5 rounded-full">0</span>
+                </div>
+
+                <!-- Search Box -->
+                <div class="relative w-full sm:w-64">
+                    <input type="text" id="searchInput" oninput="renderProducts()" placeholder="Tìm gói, acc, mod..." class="w-full pl-8 pr-3 py-1.5 text-xs bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    <i class="fa-solid fa-magnifying-glass absolute left-2.5 top-2.5 text-slate-400 text-xs"></i>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Populated dynamically via JS -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="hidden text-center py-12 space-y-3 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">
+                <div class="w-14 h-14 bg-slate-100 dark:bg-slate-800 text-slate-400 rounded-full flex items-center justify-center mx-auto text-xl">
+                    <i class="fa-solid fa-box-open"></i>
+                </div>
+                <h3 class="font-bold text-slate-700 dark:text-slate-300 text-sm">Không tìm thấy sản phẩm nào!</h3>
+                <p class="text-xs text-slate-500">Thử gõ từ khóa khác hoặc chọn danh mục tựa game khác.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- MODAL 1: Admin Login -->
+    <div id="loginModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden">
+        <div class="bg-white dark:bg-slate-900 w-full max-w-sm rounded-2xl p-5 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4">
+            <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-2">
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-user-shield text-emerald-600"></i> Đăng Nhập Quản Trị Viên (Admin)
+                </h3>
+                <button onclick="closeModal('loginModal')" class="text-slate-400 hover:text-slate-600 dark:hover:text-white">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <form onsubmit="handleAdminLogin(event)" class="space-y-3">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Mật khẩu Admin</label>
+                    <input type="password" id="adminPassInput" required placeholder="Nhập: admin" class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                </div>
+                <div class="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold bg-emerald-50 dark:bg-emerald-950/50 p-2 rounded-lg border border-emerald-100 dark:border-emerald-900">
+                    <p><i class="fa-solid fa-key mr-1"></i> Mật khẩu mặc định: <b class="underline">admin</b></p>
+                </div>
+                <button type="submit" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs shadow-md transition-all">
+                    Xác Nhận Đăng Nhập
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 2: Add Category (Admin) -->
+    <div id="addCategoryModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden">
+        <div class="bg-white dark:bg-slate-900 w-full max-w-sm rounded-2xl p-5 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4">
+            <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-2">
+                <h3 class="font-bold text-slate-900 dark:text-white text-sm">Thêm Tựa Game / Danh Mục Mới</h3>
+                <button onclick="closeModal('addCategoryModal')" class="text-slate-400 hover:text-slate-600">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <form onsubmit="handleAddCategory(event)" class="space-y-3">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Mã Danh Mục (viết liền không dấu)</label>
+                    <input type="text" id="catIdInput" required placeholder="vd: roblx" class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Tên Tựa Game Hiển Thị</label>
+                    <input type="text" id="catNameInput" required placeholder="vd: ACC ROBLOX BLOX FRUIT" class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Icon FontAwesome</label>
+                    <input type="text" id="catIconInput" required value="fa-gamepad" class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                </div>
+                <button type="submit" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs shadow-md transition-all">
+                    Tạo Danh Mục
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 3: Add / Edit Product (Admin) -->
+    <div id="productModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden">
+        <div class="bg-white dark:bg-slate-900 w-full max-w-lg rounded-2xl p-5 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-2">
+                <h3 id="productModalTitle" class="font-bold text-slate-900 dark:text-white text-sm">Đăng Bán Sản Phẩm Mới</h3>
+                <button onclick="closeModal('productModal')" class="text-slate-400 hover:text-slate-600">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <form onsubmit="handleSaveProduct(event)" class="space-y-3">
+                <input type="hidden" id="prodEditId">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Tên Gói / Tên Acc / Key Mod</label>
+                    <input type="text" id="prodName" required placeholder="ACC LIÊN QUÂN FULL SKIN VIP" class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Tựa Game / Danh Mục</label>
+                        <select id="prodCategory" class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                            <!-- Populated via JS -->
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Số Lượng Có Sẵn</label>
+                        <input type="number" id="prodStock" required value="10" class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Giá Bán (VNĐ)</label>
+                        <input type="number" id="prodPrice" required placeholder="25000" class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Giá Gốc Gạch Đi (VNĐ)</label>
+                        <input type="number" id="prodOriginalPrice" placeholder="50000" class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Các Dòng Mô Tả Đặc Điểm (mỗi dòng 1 ý)</label>
+                    <textarea id="prodFeatures" rows="3" placeholder="FULL ACCESS BẢO HÀNH 1 ĐỔI 1&#10;HỖ TRỢ ĐỔI EMAIL VÀ MẬT KHẨU&#10;GIAO DỊCH TỰ ĐỘNG 24/7" class="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline
